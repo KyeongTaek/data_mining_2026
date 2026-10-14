@@ -70,16 +70,3 @@ white_wine_quality = wine.loc[wine['type'] == 'white', 'quality'] # white의 품
 print(stats.ttest_ind(red_wine_quality, white_wine_quality, equal_var = False)) # 두 독립된 표본 집단(red와 white)의 평균에 대한 독립표본 t-검정 수행.
 ## statistic의 값이 t-value. 이때 수식에서 X2 평균이 더 크면 음수도 가능(X1과 X2를 바꾸면 부호 바뀜). 여기서 중요한 건 값의 크기.
 ## pvalue의 값이 t-value를 기반으로 산정한 p-value. 이때 0.05보다 작으므로, 두 집단(red, white) 간에 유의미한 차이가 있음을 확인.
-
-# 3-3. 회귀 분석
-from statsmodels.formula.api import ols, glm # ols: 다중 선형 회귀 분석
-
-Rformula_origin = 'quality ~ fixed_acidity + volatile_acidity + citric_acid + residual_sugar + chlorides + free_sulfur_dioxide + density + pH + sulphates + alcohol' # 11개의 독립변수를 선형결합(각 weight와 곱해짐)하여 종속변수 예측하는 회귀식
-origin_result = ols(Rformula_origin, data = wine).fit() # 다중 선형 회귀 분석 방식으로 학습 시켜라
-
-print(origin_result.summary()) # 학습된 정보 출력
-
-Rformula_type = 'quality ~ fixed_acidity + volatile_acidity + citric_acid + residual_sugar + chlorides + free_sulfur_dioxide + density + pH + sulphates + alcohol + type_int' # type을 포함해 12개의 독립변수를 선형결합하여 종속변수 예측하는 회귀식
-type_result = ols(Rformula_type, data = wine).fit()
-
-print(type_result.summary())
