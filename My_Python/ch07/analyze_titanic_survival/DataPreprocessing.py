@@ -57,7 +57,7 @@ def exploratory_data_analysis():
     plt.show()
 
     # 3. 등급별 생존자 수를 차트로 나타내기
-    sns.countplot(x = 'pclass', hue = 'survived', data = titanic) # 히스토그램 형태. pclass의 유형을 x축으로. 종속 변수(hue)는 survived=0과 survived=1의 개수.
+    sns.countplot(x = 'pclass', hue = 'survived', data = titanic) # 히스토그램 형태. pclass의 유형을 x축으로. hue에는 종속 변수 survived를 넣어서 시각적으로 표현(survived=0과 survived=1의 개수)
     plt.title('PClass vs Survived')
     plt.show() # pclass가 클수록 사망 높아짐(survived 작아짐) -> 음의 상관관계
 
